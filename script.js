@@ -17,7 +17,10 @@ DOWNLOAD.addEventListener("click",()=>{
     DownloadLink.remove();
 })
 
+
 INPUT.onchange = function (event) {
+
+  console.log(event);
   const file = event.target.files[0]; // get the file
   const blobURL = URL.createObjectURL(file);
   const img = new Image();
