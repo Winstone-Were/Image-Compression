@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #313866;
+    display: flex;
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: flex-start;
+}
+
+#container {
+    margin-top: 50px;
+    width: 50%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    background-color: #50409A;
+}
+
+.form {
+    margin-top: 500px;
+    margin-bottom: 50px;
+}
+
+button {
+    margin: 0;
+    border: 0;
+    padding: 5px;
+    background-color: #964ec2;
+    color: white;
+}
