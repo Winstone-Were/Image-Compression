@@ -2,6 +2,7 @@ const MAX_WIDTH = 320;
 const MAX_HEIGHT = 180;
 
 const INPUT = document.getElementById("imgId");
+const container = document.querySelector('.imageholder');
 
 const DOWNLOAD = document.getElementById("downloadImg"); 
 DOWNLOAD.addEventListener("click",()=>{
@@ -33,13 +34,13 @@ INPUT.onchange = function (event) {
     canvas.height = newHeight;
     const ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0, newWidth, newHeight);
-    document.body.appendChild(canvas);
+    container.appendChild(canvas);
     canvas.toBlob(
       (blob) => {
         // Handle the compressed image.
         const displayTag = document.createElement('h1');
         displayTag.innerText = `Original Image - ${readableBytes(file.size)} :::::: Compressed Image - ${readableBytes(blob.size)}`;
-         document.getElementById('container').append(displayTag);
+         document.querySelector('.imageholder').append(displayTag);
       },
     );
   };
