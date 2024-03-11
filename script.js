@@ -1,8 +1,9 @@
-const MAX_WIDTH = 320;
-const MAX_HEIGHT = 180;
+const MAX_WIDTH = 440;
+const MAX_HEIGHT = 440;
 
 const INPUT = document.getElementById("imgId");
 const container = document.querySelector('.imageholder');
+
 
 const DOWNLOAD = document.getElementById("downloadImg"); 
 DOWNLOAD.addEventListener("click",()=>{
@@ -18,8 +19,15 @@ DOWNLOAD.addEventListener("click",()=>{
     DownloadLink.remove();
 })
 
-
+INPUT.onclick = () =>{ 
+  let image_canvas_element = document.querySelector('canvas');
+  let image_h1_element = document.querySelector('h1');
+  container.removeChild(image_canvas_element);
+  container.removeChild(image_h1_element);
+} 
 INPUT.onchange = function (event) {
+
+
 
   console.log(event);
   const file = event.target.files[0]; // get the file
@@ -30,6 +38,7 @@ INPUT.onchange = function (event) {
   img.onload = function () {
     const [newWidth, newHeight] = calculateSize(img, MAX_WIDTH, MAX_HEIGHT);
     const canvas = document.createElement("canvas");
+   // canvas.className('image-canvas');
     canvas.width = newWidth;
     canvas.height = newHeight;
     const ctx = canvas.getContext("2d");
