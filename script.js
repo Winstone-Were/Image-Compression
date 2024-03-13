@@ -1,30 +1,36 @@
-const MAX_WIDTH = 440;
-const MAX_HEIGHT = 440;
+let MAX_WIDTH;
+let MAX_HEIGHT;
+
+const HEIGHT_INPUT = document.querySelector('.height-input');
+const WIDTH_INPUT = document.querySelector('.width-input');
+
+MAX_HEIGHT = HEIGHT_INPUT.value;
+MAX_WIDTH = WIDTH_INPUT.value;
 
 const INPUT = document.getElementById("imgId");
 const container = document.querySelector('.imageholder');
 
 
-const DOWNLOAD = document.getElementById("downloadImg"); 
-DOWNLOAD.addEventListener("click",()=>{
-    let canvas = document.querySelector("canvas");
-    let canvasURL = canvas.toDataURL();
+const DOWNLOAD = document.getElementById("downloadImg");
+DOWNLOAD.addEventListener("click", () => {
+  let canvas = document.querySelector("canvas");
+  let canvasURL = canvas.toDataURL();
 
-    const DownloadLink = document.createElement('a');
-    DownloadLink.href = canvasURL;
+  const DownloadLink = document.createElement('a');
+  DownloadLink.href = canvasURL;
 
-    DownloadLink.download = "image";
+  DownloadLink.download = "image";
 
-    DownloadLink.click();
-    DownloadLink.remove();
+  DownloadLink.click();
+  DownloadLink.remove();
 })
 
-INPUT.onclick = () =>{ 
+INPUT.onclick = () => {
   let image_canvas_element = document.querySelector('canvas');
   let image_h1_element = document.querySelector('h1');
   container.removeChild(image_canvas_element);
   container.removeChild(image_h1_element);
-} 
+}
 INPUT.onchange = function (event) {
 
 
@@ -34,11 +40,14 @@ INPUT.onchange = function (event) {
   const blobURL = URL.createObjectURL(file);
   const img = new Image();
   img.src = blobURL;
-  
+
   img.onload = function () {
+    MAX_HEIGHT = HEIGHT_INPUT.value;
+    MAX_WIDTH = WIDTH_INPUT.value;
+
     const [newWidth, newHeight] = calculateSize(img, MAX_WIDTH, MAX_HEIGHT);
     const canvas = document.createElement("canvas");
-   // canvas.className('image-canvas');
+    // canvas.className('image-canvas');
     canvas.width = newWidth;
     canvas.height = newHeight;
     const ctx = canvas.getContext("2d");
@@ -49,7 +58,7 @@ INPUT.onchange = function (event) {
         // Handle the compressed image.
         const displayTag = document.createElement('h1');
         displayTag.innerText = `Original Image - ${readableBytes(file.size)} :::::: Compressed Image - ${readableBytes(blob.size)}`;
-         document.querySelector('.imageholder').append(displayTag);
+        document.querySelector('.imageholder').append(displayTag);
       },
     );
   };
