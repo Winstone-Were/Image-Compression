@@ -7,6 +7,14 @@ const WIDTH_INPUT = document.querySelector('.width-input');
 MAX_HEIGHT = HEIGHT_INPUT.value;
 MAX_WIDTH = WIDTH_INPUT.value;
 
+HEIGHT_INPUT.addEventListener('change',(event)=>{
+  MAX_HEIGHT = event.target.value;
+});
+
+WIDTH_INPUT.addEventListener('change',(event)=>{
+  MAX_WIDTH = event.target.value;
+})
+
 const INPUT = document.getElementById("imgId");
 const container = document.querySelector('.imageholder');
 
@@ -42,8 +50,8 @@ INPUT.onchange = function (event) {
   img.src = blobURL;
 
   img.onload = function () {
-    MAX_HEIGHT = HEIGHT_INPUT.value;
-    MAX_WIDTH = WIDTH_INPUT.value;
+    //MAX_HEIGHT = HEIGHT_INPUT.value;
+    //MAX_WIDTH = WIDTH_INPUT.value;
 
     const [newWidth, newHeight] = calculateSize(img, MAX_WIDTH, MAX_HEIGHT);
     const canvas = document.createElement("canvas");
