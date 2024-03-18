@@ -3,6 +3,7 @@ let MAX_HEIGHT;
 
 const HEIGHT_INPUT = document.querySelector('.height-input');
 const WIDTH_INPUT = document.querySelector('.width-input');
+const TEXT_SPACE = document.querySelector('.textspace');
 
 MAX_HEIGHT = HEIGHT_INPUT.value;
 MAX_WIDTH = WIDTH_INPUT.value;
@@ -35,9 +36,9 @@ DOWNLOAD.addEventListener("click", () => {
 
 INPUT.onclick = () => {
   let image_canvas_element = document.querySelector('canvas');
-  let image_h1_element = document.querySelector('h1');
+  let image_h1_element = document.querySelector('h3');
   container.removeChild(image_canvas_element);
-  container.removeChild(image_h1_element);
+  TEXT_SPACE.removeChild(image_h1_element);
 }
 INPUT.onchange = function (event) {
 
@@ -64,9 +65,9 @@ INPUT.onchange = function (event) {
     canvas.toBlob(
       (blob) => {
         // Handle the compressed image.
-        const displayTag = document.createElement('h1');
+        const displayTag = document.createElement('h3');
         displayTag.innerText = `Original Image - ${readableBytes(file.size)} :::::: Compressed Image - ${readableBytes(blob.size)}`;
-        document.querySelector('.imageholder').append(displayTag);
+        TEXT_SPACE.append(displayTag);
       },
     );
   };
