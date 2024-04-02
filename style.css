@@ -3,12 +3,15 @@
     padding: 0;
 }
 
-body {
-    background-color: #313866;
+body {  
     display: flex;
     justify-content: space-around;
     align-content: space-around;
     align-items: flex-start;
+    background-image: url('/background.jpg');
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
 }
 
 #container {
@@ -20,7 +23,8 @@ body {
     align-content: center;
     align-items: center;
     text-align: center;
-    background-color: #50409A;
+    background-color: #643a04dc;
+    color: #fff;
 }
 
 .imageholder {
@@ -39,6 +43,6 @@ button {
     margin: 0;
     border: 0;
     padding: 5px;
-    background-color: #964ec2;
+    background-color: #e46d0b;
     color: white;
 }
